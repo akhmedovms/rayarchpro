@@ -5,8 +5,3 @@
 .bigContainer {
   @apply w-full max-w-[1600px] mx-auto px-14;
 }
-
-.blur-bg {
-  -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(30px);
-}

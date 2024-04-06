@@ -30,13 +30,13 @@ export function Navbarr() {
         visible ? "" : "-translate-y-full"
       } `}
     >
-      <div className="flex justify-between items-center bigContainer">
+      <div className="flex justify-between items-center mx-auto px-4 lg:px-14">
         <div>
           <Link href="/">
             <h2 className="text-white text-4xl font-light">Ray</h2>
           </Link>
         </div>
-        <div className="hidden md:flex gap-14 text-white">
+        <div className="hidden lg:flex gap-14 text-white">
           {menuItems.map((item, i) => (
             <Link key={i} href={item.href}>
               {item.label}
@@ -44,7 +44,7 @@ export function Navbarr() {
           ))}
         </div>
         <button
-          className="cursor-pointer text-[42px] font-light text-white md:hidden"
+          className="cursor-pointer text-[42px] font-light text-white lg:hidden"
           onClick={() => setIsOpen(true)}
         >
           <svg

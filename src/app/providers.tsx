@@ -8,7 +8,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
       <div>
         <Navbarr />
       </div>
-      <div className="h-screen">{children}</div>
+      <div className="h-[2000px]">{children}</div>
     </NextUIProvider>
   );
 };

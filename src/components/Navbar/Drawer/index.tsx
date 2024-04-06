@@ -16,8 +16,10 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: thisProps) => {
              ${isOpen ? "backdrop-blur-sm !z-[1000]" : "opacity-0"}`}
       />
       <div
-        className={`fixed  w-full p-[16px] !z-[1000] !duration-400 ml-[-20px] h-[100vh] top-0 right-0 flex  flex-col  items-center  ${
-          isOpen ? "translate-x-[0px] duration-400" : "translate-x-[100%]"
+        className={`fixed w-full lg:w-[500px] p-[16px] !z-[1000] !duration-400 ml-[-20px] h-[100vh] top-0 right-0 flex  flex-col  items-center  ${
+          isOpen
+            ? "translate-x-[0px] duration-400"
+            : "translate-x-full lg:translate-x-[500px]"
         }  bg-slate-900 py-6`}
       >
         <div
