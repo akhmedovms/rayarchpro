@@ -5,7 +5,7 @@ import Drawer from "./Drawer";
 export function Navbarr() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const menuItems = [
     { href: "/aboutus", label: "About us" },
@@ -26,7 +26,7 @@ export function Navbarr() {
 
   return (
     <div
-      className={`bg-gray-800 py-6 fixed top-0 w-full transition duration-100  ${
+      className={`bg-gray-700 py-6 fixed top-0 w-full transition duration-100  ${
         visible ? "" : "-translate-y-full"
       } `}
     >
@@ -52,11 +52,11 @@ export function Navbarr() {
             width="38"
             height="38"
             viewBox="0 0 24 24"
-            stroke-width="1"
+            // stroke-width="1"
             stroke="#ffffff"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            // stroke-linecap="round"
+            // stroke-linejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 8l16 0" />
