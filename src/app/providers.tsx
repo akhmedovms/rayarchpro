@@ -1,12 +1,12 @@
 "use client";
-import { Navbarr } from "@/components/Navbar";
+import { Navbar } from "@/components/Navbar";
 import { NextUIProvider } from "@nextui-org/react";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <NextUIProvider>
       <div>
-        <Navbarr />
+        <Navbar />
       </div>
       <div className="h-[2000px]">{children}</div>
     </NextUIProvider>

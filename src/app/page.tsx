@@ -1,8 +1,11 @@
-import { Button } from "@nextui-org/react";
-import React from "react";
+import Home from "@/pages/Home";
 
 const page = () => {
-  return <div>{/* <Button color="secondary">Click Me</Button> */}</div>;
+  return (
+    <div>
+      <Home />
+    </div>
+  );
 };
 
 export default page;

@@ -10,17 +10,17 @@ interface thisProps {
 }
 const Drawer = ({ isOpen, setIsOpen, menuItems }: thisProps) => {
   return (
-    <div id="drawer">
+    <div id="drawer ">
       <div
-        className={`fixed  z-[-1] w-screen bottom-0 h-full duration-500 drawer 
-             ${isOpen ? "backdrop-blur-sm !z-[1000]" : "opacity-0"}`}
+        className={`fixed z-[-1] w-screen bottom-0 h-full duration-500 drawer 
+             ${isOpen ? "!z-[1000]" : "opacity-0"}`}
       />
       <div
-        className={`fixed w-full lg:w-[500px] p-[16px] !z-[1000] !duration-400 ml-[-20px] h-[100vh] top-0 right-0 flex  flex-col  items-center  ${
+        className={`fixed w-full md:w-[600px] p-[16px] !z-[1000] !duration-400 ml-[-20px] h-[100vh] top-0 right-0 flex flex-col items-center ${
           isOpen
             ? "translate-x-[0px] duration-400"
-            : "translate-x-full lg:translate-x-[500px]"
-        }  bg-slate-900 py-6`}
+            : "translate-x-full md:translate-x-[600px]"
+        }  backdrop-filter backdrop-blur-2xl bg-opacity-65 py-6`}
       >
         <div
           className={

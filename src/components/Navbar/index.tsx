@@ -1,34 +1,55 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { TbMenu } from "react-icons/tb";
 import Drawer from "./Drawer";
-export function Navbarr() {
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+interface MenuItem {
+  href: string;
+  label: string;
+}
+
+export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
   const [visible, setVisible] = useState(false);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { href: "/aboutus", label: "About us" },
     { href: "/contact", label: "Contact" },
     { href: "/team", label: "Team" },
   ];
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      setVisible(currentScrollPos > prevScrollPos || prevScrollPos === 0);
-      setPrevScrollPos(currentScrollPos);
+      setIsScrolling(true);
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        setIsScrolling(false);
+      }, 1000);
     };
 
+    const visibleNavbar = () => {
+      const currentScrollPos = window.pageYOffset;
+      setVisible(currentScrollPos > 0);
+    };
+
+    window.addEventListener("scroll", visibleNavbar);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, visible]);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("scroll", visibleNavbar);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div
-      className={`bg-gray-700 py-6 fixed top-0 w-full transition duration-100  ${
-        visible ? "" : "-translate-y-full"
-      } `}
+      className={`z-50 py-6 fixed top-0 w-full transition duration-100 ${
+        isScrolling ? "backdrop-filter backdrop-blur-md bg-opacity-65" : ""
+      } ${visible ? "" : "-translate-y-full"}`}
     >
       <div className="flex justify-between items-center mx-auto px-4 lg:px-14">
         <div>
@@ -52,11 +73,8 @@ export function Navbarr() {
             width="38"
             height="38"
             viewBox="0 0 24 24"
-            // stroke-width="1"
             stroke="#ffffff"
             fill="none"
-            // stroke-linecap="round"
-            // stroke-linejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 8l16 0" />
