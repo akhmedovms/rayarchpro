@@ -63,7 +63,9 @@ export function Navbar() {
 
   return (
     <div
-      className={`z-50 py-6 fixed top-0 w-full transition duration-100 ${
+      className={`z-50 py-6 fixed top-0 w-full  ${
+        isOpen ? "" : "transition duration-100"
+      } ${
         isScrolling && !isOpen
           ? "backdrop-filter backdrop-blur-md bg-opacity-65"
           : ""
