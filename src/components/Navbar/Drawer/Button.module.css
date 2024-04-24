@@ -1,0 +1,26 @@
+.hoverEffect {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+}
+.hoverEffect::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.07em;
+  bottom: 0;
+  left: 0;
+  background: currentcolor;
+  transform-origin: bottom right;
+  transition: transform 0.2s ease-out;
+}
+.hoverEffect:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.LinkEf {
+  font-weight: 500;
+}

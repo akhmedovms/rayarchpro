@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import { Providers } from "./providers";
+import { Montserrat } from "next/font/google";
 
-// const inter = Inter({ subsets: ["latin"] });
+const mont = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   title: "Ray company",
   description: "Ray company's website",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -15,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="dark">
-      <body>
+      <body className={mont.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

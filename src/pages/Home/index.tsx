@@ -4,8 +4,8 @@ import HERObg from "@/assets/HERO-bg.jpg";
 const Page = () => {
   return (
     <div className="">
-      <div className="inset-0">
-        <Image src={HERObg} alt="" layout="fill" objectFit="cover" />
+      <div className=" absolute inset-0">
+        <Image className="object-cover" src={HERObg} alt="" fill priority />
       </div>
     </div>
   );

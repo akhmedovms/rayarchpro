@@ -1,22 +1,24 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import Link from "next/link";
-import Drawer from "./Drawer";
+import dynamic from "next/dynamic";
+import { usePathname, useRouter } from "next/navigation";
+import styles from "./Drawer/Button.module.css";
+import Image from "next/image";
+import logo from "@/assets/logo.jpg";
 
 interface MenuItem {
   href: string;
   label: string;
 }
 
+const Drawer = dynamic(() => import("./Drawer"), { ssr: false });
+
 export function Navbar() {
+  const pathName = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [visible, setVisible] = useState(false);
-
-  const menuItems: MenuItem[] = [
-    { href: "/aboutus", label: "About us" },
-    { href: "/contact", label: "Contact" },
-    { href: "/team", label: "Team" },
-  ];
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -35,38 +37,56 @@ export function Navbar() {
       setVisible(currentScrollPos > 0);
     };
 
-    window.addEventListener("scroll", visibleNavbar);
-    window.addEventListener("scroll", handleScroll);
+    if (!isOpen) {
+      window.addEventListener("scroll", visibleNavbar);
+      window.addEventListener("scroll", handleScroll);
+    } else {
+      setIsScrolling(false);
+    }
 
     return () => {
       clearTimeout(timeoutId);
-      window.removeEventListener("scroll", visibleNavbar);
-      window.removeEventListener("scroll", handleScroll);
+      if (!isOpen) {
+        window.removeEventListener("scroll", visibleNavbar);
+        window.removeEventListener("scroll", handleScroll);
+      }
     };
-  }, []);
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isOpen]);
 
   return (
     <div
       className={`z-50 py-6 fixed top-0 w-full transition duration-100 ${
-        isScrolling ? "backdrop-filter backdrop-blur-md bg-opacity-65" : ""
+        isScrolling && !isOpen
+          ? "backdrop-filter backdrop-blur-md bg-opacity-65"
+          : ""
       } ${visible ? "" : "-translate-y-full"}`}
     >
       <div className="flex justify-between items-center mx-auto px-4 lg:px-14">
         <div>
           <Link href="/">
-            <h2 className="text-white text-4xl font-light">Ray</h2>
+            <Image src={logo} alt="" width={60} priority />
           </Link>
         </div>
         <div className="hidden lg:flex gap-14 text-white">
           {menuItems.map((item, i) => (
-            <Link key={i} href={item.href}>
+            <Link className={styles.hoverEffect} key={i} href={item.href}>
               {item.label}
             </Link>
           ))}
         </div>
         <button
           className="cursor-pointer text-[42px] font-light text-white lg:hidden"
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            setIsOpen(true);
+          }}
         >
           <svg
             className="icon icon-tabler icon-tabler-menu"
@@ -86,3 +106,10 @@ export function Navbar() {
     </div>
   );
 }
+
+const menuItems: MenuItem[] = [
+  { href: "/aboutus", label: "ABOUT US" },
+  { href: "/portfolio", label: "PPORTFOLIO" },
+  { href: "/contact", label: "CONTACT" },
+  { href: "/team", label: "TEAM" },
+];
