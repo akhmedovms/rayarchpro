@@ -66,7 +66,7 @@ export const Navbar: React.FC = () => {
           : ""
       } ${visible ? "" : "-translate-y-full"}`}
     >
-      <div className="flex justify-between items-center mx-auto px-14 lg:px-14">
+      <div className="flex justify-between items-center mx-auto px-6 sm:px-14 lg:px-14">
         <div>
           <Link href="/">
             <Image src={logo} alt="Logo" width={64} priority />

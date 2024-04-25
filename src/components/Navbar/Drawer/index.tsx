@@ -38,15 +38,15 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
   return (
     <div id="drawer">
       <div
-        className={`fixed w-full backdrop-filter backdrop-blur-2xl bg-opacity-65 md:w-[600px] p-[16px] z-[1000] duration-400 ml-[-20px] h-[100vh] top-0 right-0 flex flex-col items-center ${
+        className={`fixed w-full backdrop-filter backdrop-blur-2xl bg-opacity-65 sm:w-[400px] md:w-[600px] p-[16px] z-[1000] duration-400 ml-[-20px] h-[100vh] top-0 right-0 flex flex-col items-center ${
           isOpen
             ? "translate-x-[0px]"
-            : "translate-x-full md:translate-x-[600px]"
+            : "translate-x-full sm:translate-x-[400px] md:translate-x-[600px]"
         } py-6`}
       >
         <div className={isOpen ? "w-full flex flex-col h-full" : "hidden"}>
           <div>
-            <div className="flex justify-end pr-10 pb-5">
+            <div className="flex justify-end pr-3 sm:pr-10 pb-5">
               <button
                 className="cursor-pointer"
                 onClick={() => setIsOpen(false)}
