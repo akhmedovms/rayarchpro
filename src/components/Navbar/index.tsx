@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
@@ -13,57 +13,51 @@ interface MenuItem {
 
 const Drawer = dynamic(() => import("./Drawer"), { ssr: false });
 
-export function Navbar() {
-  const pathName = usePathname();
-  const router = useRouter();
+export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let scrollTimeout: NodeJS.Timeout;
 
     const handleScroll = () => {
       setIsScrolling(true);
-      clearTimeout(timeoutId);
+      clearTimeout(scrollTimeout);
 
-      timeoutId = setTimeout(() => {
+      scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
       }, 1000);
     };
 
-    const visibleNavbar = () => {
+    const handleVisibleNavbar = () => {
       const currentScrollPos = window.pageYOffset;
       setVisible(currentScrollPos > 0);
     };
 
     if (!isOpen) {
-      window.addEventListener("scroll", visibleNavbar);
+      window.addEventListener("scroll", handleVisibleNavbar);
       window.addEventListener("scroll", handleScroll);
     } else {
       setIsScrolling(false);
     }
 
     return () => {
-      clearTimeout(timeoutId);
+      clearTimeout(scrollTimeout);
       if (!isOpen) {
-        window.removeEventListener("scroll", visibleNavbar);
+        window.removeEventListener("scroll", handleVisibleNavbar);
         window.removeEventListener("scroll", handleScroll);
       }
     };
   }, [isOpen]);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "";
   }, [isOpen]);
 
   return (
-    <div
-      className={`z-50 py-6 fixed top-0 w-full  ${
+    <nav
+      className={`z-50 py-6 fixed top-0 w-full ${
         isOpen ? "" : "transition duration-100"
       } ${
         isScrolling && !isOpen
@@ -74,7 +68,7 @@ export function Navbar() {
       <div className="flex justify-between items-center mx-auto px-4 lg:px-14">
         <div>
           <Link href="/">
-            <Image src={logo} alt="" width={60} priority />
+            <Image src={logo} alt="Logo" width={60} priority />
           </Link>
         </div>
         <div className="hidden lg:flex gap-14 text-white">
@@ -86,9 +80,7 @@ export function Navbar() {
         </div>
         <button
           className="cursor-pointer text-[42px] font-light text-white lg:hidden"
-          onClick={() => {
-            setIsOpen(true);
-          }}
+          onClick={() => setIsOpen(true)}
         >
           <svg
             className="icon icon-tabler icon-tabler-menu"
@@ -105,13 +97,12 @@ export function Navbar() {
         </button>
       </div>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen} menuItems={menuItems} />
-    </div>
+    </nav>
   );
-}
-
+};
 const menuItems: MenuItem[] = [
-  { href: "/aboutus", label: "ABOUT US" },
-  { href: "/portfolio", label: "PPORTFOLIO" },
-  { href: "/contact", label: "CONTACT" },
-  { href: "/team", label: "TEAM" },
+  { href: "/Portfolio", label: "Portfolio" },
+  { href: "/About", label: "About" },
+  { href: "/Contact", label: "Contact" },
+  { href: "/Team", label: "Team" },
 ];
