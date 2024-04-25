@@ -4,11 +4,12 @@ import { Button } from "@nextui-org/react";
 import { GoX } from "react-icons/go";
 import Link from "next/link";
 import styles from "./Button.module.css";
+import { Tooltip } from "@nextui-org/react";
+
 // icons
 import { IoPhonePortraitOutline } from "react-icons/io5";
+import { FaTelegram, FaInstagram, FaBehance } from "react-icons/fa";
 import { BsTelegram } from "react-icons/bs";
-import { FaInstagram } from "react-icons/fa";
-import { PiBehanceLogo } from "react-icons/pi";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -69,24 +70,103 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
               </div>
               <hr className="opacity-60 mt-8" />
             </div>
-            <div className="pt-10 pl-8 flex flex-col gap-3">
-              <Link
-                href="tel:+998997087700"
-                className="text-2xl flex items-center gap-1"
-              >
-                <IoPhonePortraitOutline color="white" />
-                <span className="text-white text-xl"> +998 99 708 77 00</span>
-              </Link>
+            <div className="pt-10 pl-8 flex gap-6">
+              <Tooltip content="+998 99 708 7700" delay={50}>
+                <Link
+                  href="tel:+998997087700"
+                  className="flex items-center justify-center p-2 rounded-full bg-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon icon-tabler icon-tabler-device-mobile"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="#000000"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14z" />
+                    <path d="M11 4h2" />
+                    <path d="M12 17v.01" />
+                  </svg>
+                </Link>
+              </Tooltip>
+              <Tooltip content="T.me / RAYARCHPRO" delay={50}>
+                <Link
+                  href="#"
+                  className="flex items-center justify-center  p-2 rounded-full   bg-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon icon-tabler icon-tabler-brand-telegram"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="#000000"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
+                  </svg>
+                </Link>
+              </Tooltip>
+              <Tooltip content="Inst / RAYARCHPRO" delay={50}>
+                <Link
+                  href="#"
+                  className=" flex items-center justify-center p-2 rounded-full bg-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon icon-tabler icon-tabler-brand-instagram"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="#000000"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+                    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M16.5 7.5l0 .01" />
+                  </svg>
+                </Link>
+              </Tooltip>
 
-              <Link href="" className="text-2xl">
-                <BsTelegram color="white" />
-              </Link>
-              <Link href={""} className="text-2xl">
-                <FaInstagram color="white" />
-              </Link>
-              <Link href={""} className="text-2xl">
-                <PiBehanceLogo color="white" />
-              </Link>
+              <Tooltip content="Be.net / RAYARCHPRO" delay={50}>
+                <Link
+                  href="#"
+                  className="text-2xl flex items-center justify-center  p-2 rounded-full bg-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon icon-tabler icon-tabler-brand-behance"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="#000000"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5" />
+                    <path d="M3 12l4.5 0" />
+                    <path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1" />
+                    <path d="M16 6l3 0" />
+                  </svg>
+                </Link>
+              </Tooltip>
             </div>
           </div>
         </div>
