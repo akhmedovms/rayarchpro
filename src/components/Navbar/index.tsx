@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import styles from "./Drawer/Button.module.css";
 import Image from "next/image";
 import logo from "@/assets/logo.jpg";
+import { button } from "@nextui-org/react";
 
 interface MenuItem {
   href: string;
@@ -65,27 +66,27 @@ export const Navbar: React.FC = () => {
           : ""
       } ${visible ? "" : "-translate-y-full"}`}
     >
-      <div className="flex justify-between items-center mx-auto px-4 lg:px-14">
+      <div className="flex justify-between items-center mx-auto px-14 lg:px-14">
         <div>
           <Link href="/">
-            <Image src={logo} alt="Logo" width={60} priority />
+            <Image src={logo} alt="Logo" width={64} priority />
           </Link>
         </div>
         <div className="hidden lg:flex gap-14 text-white">
           {menuItems.map((item, i) => (
-            <Link className={styles.hoverEffect} key={i} href={item.href}>
-              {item.label}
-            </Link>
+            <button key={i} className={`${styles.hoverEffect} `}>
+              <Link href={item.href}>{item.label}</Link>
+            </button>
           ))}
         </div>
         <button
-          className="cursor-pointer text-[42px] font-light text-white lg:hidden"
+          className="cursor-pointer font-light text-white lg:hidden"
           onClick={() => setIsOpen(true)}
         >
           <svg
             className="icon icon-tabler icon-tabler-menu"
-            width="38"
-            height="38"
+            width="48"
+            height="48"
             viewBox="0 0 24 24"
             stroke="#ffffff"
             fill="none"
@@ -101,8 +102,8 @@ export const Navbar: React.FC = () => {
   );
 };
 const menuItems: MenuItem[] = [
-  { href: "/Portfolio", label: "Portfolio" },
-  { href: "/About", label: "About" },
-  { href: "/Contact", label: "Contact" },
-  { href: "/Team", label: "Team" },
+  { href: "/About", label: "ABOUT US" },
+  { href: "/Portfolio", label: "PORTFOLIO" },
+  { href: "/Contact", label: "CONTACTS" },
+  { href: "/Team", label: "TEAM" },
 ];

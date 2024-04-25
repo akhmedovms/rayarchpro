@@ -46,34 +46,59 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
       >
         <div className={isOpen ? "w-full flex flex-col h-full" : "hidden"}>
           <div>
-            <div className="flex justify-end pb-10">
-              <GoX
-                className="text-white text-[38px] cursor-pointer"
+            <div className="flex justify-end pr-10 pb-5">
+              <button
+                className="cursor-pointer"
                 onClick={() => setIsOpen(false)}
-              />
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-x"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  stroke-width="1"
+                  stroke="#ffffff"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M18 6l-12 12" />
+                  <path d="M6 6l12 12" />
+                </svg>
+              </button>
             </div>
+            <div>
+              <svg className={`${styles.RayEffect}`} viewBox="0 0 1320 300">
+                <text x="41.5%" y="50%" dy=".35em" text-anchor="middle">
+                  RAYARCHPRO
+                </text>
+              </svg>
+            </div>
+
             <div className="flex flex-col">
               <hr className="opacity-60 mb-8" />
 
-              <div className="flex flex-col place-items-start pl-5 gap-4">
+              <div className="flex flex-col place-items-start pl-8 gap-12">
                 {menuItems.map((item, i) => (
-                  <Button
+                  <button
                     key={i}
-                    className={`${styles.hoverEffect} bg-transparent`}
+                    className={`${styles.hoverEffect} `}
                     onClick={() => setIsOpen(false)}
                   >
-                    <Link className={`${styles.LinkEf} `} href={item.href}>
+                    <Link className={`${styles.LinkEf}`} href={item.href}>
                       {item.label}
                     </Link>
-                  </Button>
+                  </button>
                 ))}
               </div>
               <hr className="opacity-60 mt-8" />
             </div>
             <div className="pt-10 pl-8 flex gap-6">
-              <Tooltip content="+998 99 708 7700" delay={50}>
+              <Tooltip content="+998 99 708 7000" delay={50}>
                 <Link
-                  href="tel:+998997087700"
+                  href="tel:+998997087000"
                   className="flex items-center justify-center p-2 rounded-full bg-white"
                 >
                   <svg
@@ -97,7 +122,7 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
               </Tooltip>
               <Tooltip content="T.me / RAYARCHPRO" delay={50}>
                 <Link
-                  href="#"
+                  href="https://t.me/RAY_Archpro"
                   className="flex items-center justify-center  p-2 rounded-full   bg-white"
                 >
                   <svg
@@ -119,7 +144,7 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
               </Tooltip>
               <Tooltip content="Inst / RAYARCHPRO" delay={50}>
                 <Link
-                  href="#"
+                  href="https://www.instagram.com/ray.archpro"
                   className=" flex items-center justify-center p-2 rounded-full bg-white"
                 >
                   <svg
@@ -144,7 +169,7 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
 
               <Tooltip content="Be.net / RAYARCHPRO" delay={50}>
                 <Link
-                  href="#"
+                  href="https://www.behance.net/rayarchpro1"
                   className="text-2xl flex items-center justify-center  p-2 rounded-full bg-white"
                 >
                   <svg
