@@ -46,7 +46,7 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
       >
         <div className={isOpen ? "w-full flex flex-col h-full" : "hidden"}>
           <div>
-            <div className="flex justify-end pr-3 sm:pr-10 pb-5">
+            <div className="flex justify-end pr-3 sm:pr-10 pb-12">
               <button
                 className="cursor-pointer"
                 onClick={() => setIsOpen(false)}
@@ -69,18 +69,11 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
                 </svg>
               </button>
             </div>
-            <div>
-              <svg className={`${styles.RayEffect}`} viewBox="0 0 1320 300">
-                <text x="41.5%" y="50%" dy=".35em" text-anchor="middle">
-                  RAYARCHPRO
-                </text>
-              </svg>
-            </div>
 
             <div className="flex flex-col">
-              <hr className="opacity-60 mb-8" />
+              <hr className="opacity-60 " />
 
-              <div className="flex flex-col place-items-start pl-8 gap-12">
+              <div className="flex flex-col place-items-center sm:place-items-start sm:pl-8 py-12 gap-12">
                 {menuItems.map((item, i) => (
                   <button
                     key={i}
@@ -93,9 +86,9 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
                   </button>
                 ))}
               </div>
-              <hr className="opacity-60 mt-8" />
+              <hr className="opacity-60" />
             </div>
-            <div className="pt-10 pl-8 flex gap-6">
+            <div className="pt-10 sm:pl-8 flex sm:justify-start justify-center gap-6">
               <Tooltip content="+998 99 708 7000" delay={50}>
                 <Link
                   href="tel:+998997087000"
