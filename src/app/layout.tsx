@@ -10,8 +10,8 @@ const mont = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Ray company",
-  description: "Ray company's website",
+  title: "Ray",
+  description: "architecture website",
 };
 export default function RootLayout({
   children,

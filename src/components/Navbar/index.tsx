@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { usePathname, useRouter } from "next/navigation";
 import styles from "./Drawer/Button.module.css";
 import Image from "next/image";
 import logo from "@/assets/logo.jpg";
-import { button } from "@nextui-org/react";
 
 interface MenuItem {
   href: string;
@@ -75,7 +73,9 @@ export const Navbar: React.FC = () => {
         <div className="hidden lg:flex gap-14 text-white">
           {menuItems.map((item, i) => (
             <button key={i} className={`${styles.hoverEffect} `}>
-              <Link href={item.href}>{item.label}</Link>
+              <Link href={item.href} className="">
+                {item.label}
+              </Link>
             </button>
           ))}
         </div>
