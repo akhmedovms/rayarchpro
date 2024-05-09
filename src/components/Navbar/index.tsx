@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import styles from "./Drawer/Button.module.css";
 import Image from "next/image";
 import logo from "@/assets/logo.jpg";
 
@@ -72,7 +71,7 @@ export const Navbar: React.FC = () => {
         </div>
         <div className="hidden lg:flex gap-14 text-white">
           {menuItems.map((item, i) => (
-            <button key={i} className={`${styles.hoverEffect} `}>
+            <button key={i} className={`hoverEffect `}>
               <Link href={item.href} className="">
                 {item.label}
               </Link>

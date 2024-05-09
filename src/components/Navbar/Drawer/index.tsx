@@ -1,15 +1,9 @@
 "use client";
 import { useEffect } from "react";
-import { Button } from "@nextui-org/react";
-import { GoX } from "react-icons/go";
 import Link from "next/link";
-import styles from "./Button.module.css";
 import { Tooltip } from "@nextui-org/react";
 
 // icons
-import { IoPhonePortraitOutline } from "react-icons/io5";
-import { FaTelegram, FaInstagram, FaBehance } from "react-icons/fa";
-import { BsTelegram } from "react-icons/bs";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -77,10 +71,10 @@ const Drawer = ({ isOpen, setIsOpen, menuItems }: DrawerProps) => {
                 {menuItems.map((item, i) => (
                   <button
                     key={i}
-                    className={`${styles.hoverEffect} `}
+                    className={`hoverEffect`}
                     onClick={() => setIsOpen(false)}
                   >
-                    <Link className={`${styles.LinkEf}`} href={item.href}>
+                    <Link className="font-[500]" href={item.href}>
                       {item.label}
                     </Link>
                   </button>

@@ -39,7 +39,7 @@ export const StickyScroll = ({
 
   return (
     <motion.div
-      className="bg-[var(--neutral-900)] pl-40 h-screen overflow-y-auto flex justify-between relative space-x-10 "
+      className="bg-[#151515] pl-40 h-screen overflow-y-auto flex justify-between relative space-x-10 "
       ref={ref}
     >
       <div className="py-[20%] relative flex">
