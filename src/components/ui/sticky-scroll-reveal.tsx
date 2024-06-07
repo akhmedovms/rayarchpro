@@ -79,7 +79,7 @@ export const StickyScroll = ({
         </div>
       </div>
 
-      <div className="hidden lg:block h-full w-[720px] bg-[var(--neutral-900)] overflow-hidden sticky top-0 left-0">
+      <div className="hidden lg:block w-[720px] bg-[var(--neutral-900)] overflow-hidden sticky top-0 left-0">
         <AnimatePresence>
           <motion.div
             key={activeCard}

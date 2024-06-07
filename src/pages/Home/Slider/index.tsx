@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Scrollbar } from "swiper/modules";
 import "swiper/css";
@@ -11,17 +12,8 @@ import Image from "next/image";
 import mainInfoOne from "@/assets/InfoArchitects/mainInfoOne.jpg";
 import mainInfoSecond from "@/assets/InfoArchitects/mainInfoSecond.jpg";
 import mainInfoThird from "@/assets/InfoArchitects/mainInfoThird.jpg";
-import { useState } from "react";
-
-// background-color: rgba(89, 131, 252, 1);
-// background-image: linear-gradient(180deg, rgba(89, 131, 252, 1) 69%, rgba(21, 21, 21, 1) 100%);
 
 function Slider() {
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const handleImageClick = (i) => {
-    setActiveIndex(i === activeIndex ? null : i);
-  };
   return (
     <div className="flex flex-col gap-8">
       <style jsx global>{`
@@ -42,84 +34,72 @@ function Slider() {
         centeredSlides={true}
         modules={[Autoplay, Pagination, Scrollbar]}
         className="w-full !duration-1000"
+        autoplay={true}
         speed={500}
-        loop={contents.length > 1}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
         scrollbar={{ draggable: true }}
-        onSlideChange={(swiper) => {
-          setActiveIndex(swiper.activeIndex);
-        }}
       >
-        <div>
-          {contents.map((con, i) => (
-            <SwiperSlide
-              key={i}
-              className="w-[100%] !duration-1000 !transition-all !h-[500px]"
-            >
-              <div className="flex flex-col lg:text-left lg:flex-row px-5 py-[30px] md:py-[97px] relative h-screen">
-                <Image
-                  src={con.image}
-                  alt={con.title}
-                  fill
-                  priority={false}
-                  className="object-cover"
-                  onClick={() => handleImageClick(i)}
-                />
-                {activeIndex === i && (
-                  <div className="z-10 ">
-                    <h3>{con.title}</h3>
-                    <p>{con.description}</p>
-                  </div>
-                )}
+        {contents.map((con, i) => (
+          <SwiperSlide
+            key={i}
+            className="w-[100%] !duration-1000 !transition-all !h-[500px]"
+          >
+            <div className="flex flex-col lg:text-left lg:flex-row px-5 py-[30px] md:py-[97px] relative h-screen">
+              <Image
+                src={con.image}
+                alt={con.title}
+                fill
+                priority={false}
+                className="object-cover"
+              />
+              <div
+                className={`z-10 pl-5 pt-10 transition-opacity duration-500`}
+              >
+                <div className="flex justify-center items-center flex-col">
+                  <h3 className="text-4xl text-white">{con.title}</h3>
+                  <p className="text-2xl text-white">{con.description}</p>
+                </div>
               </div>
-            </SwiperSlide>
-          ))}
-        </div>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
 }
 
 export default Slider;
+// background-color: rgba(89, 131, 252, 1);
+// background-image: linear-gradient(180deg, rgba(89, 131, 252, 1) 69%, rgba(21, 21, 21, 1) 100%);
 
 const contents = [
   {
-    title: "lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit odit aperiam laboriosam ea corrupti velit quod fugit sunt ex commodi.",
+    title: "Residental Interiors",
+    description: "Interior",
     image: mainInfoOne,
   },
   {
-    title: "lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit odit aperiam laboriosam ea corrupti velit quod fugit sunt ex commodi.",
+    title: "Residental Interiors",
+    description: "Exterior",
     image: mainInfoSecond,
   },
   {
-    title: "lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit odit aperiam laboriosam ea corrupti velit quod fugit sunt ex commodi.",
+    title: "Residental Interiors",
+    description: "Modern Exterior",
     image: mainInfoThird,
   },
   {
-    title: "lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit odit aperiam laboriosam ea corrupti velit quod fugit sunt ex commodi.",
+    title: "Residental Interiors",
+    description: "Modern Design",
     image: mainInfoOne,
   },
   {
-    title: "lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit odit aperiam laboriosam ea corrupti velit quod fugit sunt ex commodi.",
+    title: "Residental Interiors",
+    description: "Classic",
     image: mainInfoSecond,
   },
   {
-    title: "lorem ipsum",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit odit aperiam laboriosam ea corrupti velit quod fugit sunt ex commodi.",
+    title: "Residental Interiors",
+    description: "Exterior Design",
     image: mainInfoThird,
   },
 ];
