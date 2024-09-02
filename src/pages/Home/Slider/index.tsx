@@ -21,7 +21,6 @@ function Slider() {
           height: 2px !important;
           margin-bottom: 18px;
           width: 100%;
-          margin-left: 30px;
           right: 0 !important;
         }
         .swiper-scrollbar-drag {
@@ -40,7 +39,7 @@ function Slider() {
         {contents.map((con, i) => (
           <SwiperSlide
             key={i}
-            className="w-[100%] !duration-1000 !transition-all !h-[700px]"
+            className="w-[100%] !duration-1000 !transition-all !h-[600px] lg:!h-[700px]"
           >
             <div className="flex flex-col xl:text-left xl:flex-row px-5 py-[30px] md:py-[97px] relative h-screen">
               <Image
@@ -51,7 +50,7 @@ function Slider() {
                 className="object-cover"
               />
               <div
-                className={`z-10 pl-5 pt-10 transition-opacity duration-500`}
+                className={`z-10 pl-5 pt-24 transition-opacity duration-500`}
               >
                 <div className="flex justify-center items-center flex-col">
                   <h3 className="text-4xl text-white">{con.title}</h3>
