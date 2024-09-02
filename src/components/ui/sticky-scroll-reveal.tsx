@@ -39,13 +39,13 @@ export const StickyScroll = ({
 
   return (
     <motion.div
-      className="bg-[#151515] pl-40 h-screen overflow-y-auto flex justify-between relative space-x-10 "
+      className="bg-[#151515] pl-40 h-[788px] 2xl:h-[px] overflow-y-auto flex justify-between relative space-x-10 "
       ref={ref}
     >
       <div className="py-[20%] relative flex">
         <div className="">
           {content.map((item, index) => (
-            <div key={item.title + index} className=" pb-[65%]">
+            <div key={item.title + index} className="pb-[65%]">
               <motion.h2
                 initial={{
                   opacity: 0,
@@ -79,14 +79,14 @@ export const StickyScroll = ({
         </div>
       </div>
 
-      <div className="hidden lg:block w-[720px] bg-[var(--neutral-900)] h-screen overflow-hidden sticky top-0 left-0">
+      <div className="hidden lg:block w-[720px] bg-[var(--neutral-900)] overflow-hidden sticky top-0 left-0">
         <AnimatePresence>
           <motion.div
             key={activeCard}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className={cn(contentClassName)}
+            className={`${cn(contentClassName)} `}
           >
             {content[activeCard]?.content}
           </motion.div>

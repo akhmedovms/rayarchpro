@@ -6,10 +6,10 @@ const Home = () => {
     <div className="">
       <div className="">
         <Main />
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <InfoArchitect />
         </div>
-        <div className="block lg:hidden">
+        <div className="block xl:hidden">
           <Slider />
         </div>
       </div>

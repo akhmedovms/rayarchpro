@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Scrollbar } from "swiper/modules";
 import "swiper/css";
@@ -41,9 +40,9 @@ function Slider() {
         {contents.map((con, i) => (
           <SwiperSlide
             key={i}
-            className="w-[100%] !duration-1000 !transition-all !h-[500px]"
+            className="w-[100%] !duration-1000 !transition-all !h-[700px]"
           >
-            <div className="flex flex-col lg:text-left lg:flex-row px-5 py-[30px] md:py-[97px] relative h-screen">
+            <div className="flex flex-col xl:text-left xl:flex-row px-5 py-[30px] md:py-[97px] relative h-screen">
               <Image
                 src={con.image}
                 alt={con.title}
